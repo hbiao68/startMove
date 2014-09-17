@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>move test</title>
+    <script src="move.js"></script>
+    <style>
+        div { width:200px; height:100px; background:blue; opacity:0.3; filter:alpha(opacity=30); margin-top:10px; }
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+<div id="div2"></div>
+<script>
+    window.onload = function() {
+        var aDiv = document.getElementsByTagName("div");
+        aDiv[0].onmouseover = function() {
+            startMove(this, { width: 480, opacity: 100 }, null, 20, function() {
+                this.innerHTML = "Done!";
+            });
+        }
+        aDiv[0].onmouseout = function() {
+            startMove(this, { width: 200, opacity: 30 }, "easeOut", 20, function() {
+                this.innerHTML = "";
+            });
+        }
+        aDiv[1].onmouseover = function() {
+            startMove(this, { width: 480, opacity: 100 }, "linear", 20, function() {
+                this.innerHTML = "";
+            });
+        }
+        aDiv[1].onmouseout = function() {
+            startMove(this, { width: 200, opacity: 30 }, "easeOut", 20, function() {
+                this.innerHTML = "";
+            });
+        }
+    }
+</script>
+</body>
+</html>
